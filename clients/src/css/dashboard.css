@@ -1,6 +1,6 @@
 .dashboard-container {
     display: flex;
-    height: 100vh;
+    height: auto;
     background-color: #1e1e2d;
   }
   
@@ -89,7 +89,7 @@
   
   main {
     padding: 20px;
-    color: #fff;
+    /* color: #fff; */
   }
   
   main h1 {

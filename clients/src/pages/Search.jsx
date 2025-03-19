@@ -135,76 +135,165 @@ const Search = () => {
 
       <style jsx>{`
         .search-container {
-          padding: 20px;
-          max-width: 1000px;
+          padding: 30px;
+          max-width: 1200px;
           margin: 0 auto;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          background-color: #f9fafb;
+          border-radius: 10px;
+          box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+        h2 {
+          color: #2c3e50;
+          margin-bottom: 25px;
+          font-weight: 600;
+          border-bottom: 2px solid #4CAF50;
+          padding-bottom: 10px;
         }
         .search-form {
-          margin-bottom: 20px;
-          padding: 15px;
-          border: 1px solid #ddd;
-          border-radius: 5px;
+          margin-bottom: 30px;
+          padding: 25px;
+          border: 1px solid #e1e4e8;
+          border-radius: 8px;
+          background-color: white;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+          transition: all 0.3s ease;
+        }
+        .search-form:hover {
+          box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
         }
         .search-inputs {
           display: flex;
-          gap: 15px;
-          margin-bottom: 15px;
+          gap: 20px;
+          margin-bottom: 20px;
         }
         .form-group {
           flex: 1;
         }
+        label {
+          display: block;
+          margin-bottom: 8px;
+          color: #34495e;
+          font-weight: 500;
+        }
         .form-control {
           width: 100%;
-          padding: 8px;
-          border: 1px solid #ccc;
-          border-radius: 4px;
+          padding: 12px;
+          border: 1px solid #dcdfe6;
+          border-radius: 6px;
           margin-top: 5px;
+          font-size: 15px;
+          transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .form-control:focus {
+          outline: none;
+          border-color: #4CAF50;
+          box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.2);
         }
         .search-button {
           background-color: #4CAF50;
           color: white;
-          padding: 10px 15px;
+          padding: 12px 24px;
           border: none;
-          border-radius: 4px;
+          border-radius: 6px;
           cursor: pointer;
+          font-size: 16px;
+          font-weight: 500;
+          transition: all 0.3s ease;
+          box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .search-button:hover:not(:disabled) {
+          background-color: #43a047;
+          transform: translateY(-2px);
+          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .search-button:active:not(:disabled) {
+          transform: translateY(0);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
         .search-button:disabled {
-          background-color: #cccccc;
+          background-color: #a5d6a7;
+          cursor: not-allowed;
+          opacity: 0.7;
+        }
+        .results-container {
+          background-color: white;
+          border-radius: 8px;
+          overflow: hidden;
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+          margin-top: 30px;
+        }
+        h3 {
+          color: #2c3e50;
+          padding: 20px;
+          margin: 0;
+          background-color: #f8f9fa;
+          border-bottom: 1px solid #e9ecef;
         }
         .results-table {
           width: 100%;
-          border-collapse: collapse;
+          border-collapse: separate;
+          border-spacing: 0;
         }
         .results-table th, .results-table td {
-          border: 1px solid #ddd;
-          padding: 8px;
+          border: none;
+          border-bottom: 1px solid #e9ecef;
+          padding: 15px 20px;
           text-align: left;
         }
         .results-table th {
-          background-color: #f2f2f2;
+          background-color: #f8f9fa;
+          color: #2c3e50;
+          font-weight: 600;
+          white-space: nowrap;
+        }
+        .results-table tr:last-child td {
+          border-bottom: none;
+        }
+        .results-table tr:hover {
+          background-color: #f8f9fa;
         }
         .status-badge {
-          padding: 5px 10px;
-          border-radius: 3px;
-          font-weight: bold;
+          display: inline-block;
+          padding: 6px 12px;
+          border-radius: 30px;
+          font-weight: 500;
+          font-size: 14px;
+          text-align: center;
+          min-width: 100px;
         }
         .present {
-          background-color: #dff0d8;
-          color: #3c763d;
+          background-color: #e8f5e9;
+          color: #2e7d32;
         }
         .absent {
-          background-color: #f2dede;
-          color: #a94442;
+          background-color: #ffebee;
+          color: #c62828;
         }
         .not-marked {
-          background-color: #fcf8e3;
-          color: #8a6d3b;
+          background-color: #f3f4f6;
+          color: #64748b;
         }
         .message {
-          padding: 10px;
-          background-color: #f8f8f8;
-          border-left: 4px solid #ccc;
-          margin-bottom: 20px;
+          padding: 16px;
+          background-color: #f8f9fa;
+          border-left: 4px solid #4CAF50;
+          margin-bottom: 25px;
+          color: #2c3e50;
+          border-radius: 0 4px 4px 0;
+        }
+        @media (max-width: 768px) {
+          .search-inputs {
+            flex-direction: column;
+            gap: 15px;
+          }
+          .search-container {
+            padding: 15px;
+          }
+          .results-table th, .results-table td {
+            padding: 10px 15px;
+            font-size: 14px;
+          }
         }
       `}</style>
     </div>

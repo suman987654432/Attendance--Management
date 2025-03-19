@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import "../css/add.css";
 
 const AddStudent = () => {
   const [rollNo, setRollNo] = useState('');
@@ -31,7 +32,7 @@ const AddStudent = () => {
   return (
     <div className="student-container">
       <h2>Add Student</h2>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="student-form">
         <input
           type="text"
           placeholder="Roll No"
@@ -48,7 +49,7 @@ const AddStudent = () => {
         />
         <input
           type="text"
-          placeholder="Class "
+          placeholder="Class"
           value={className}
           onChange={(e) => setClassName(e.target.value)}
           required
