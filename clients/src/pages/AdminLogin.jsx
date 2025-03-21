@@ -125,7 +125,7 @@ const AdminLogin = () => {
                 
                 .form-group input {
                     width: 100%;
-                    padding: 12px 15px;
+                    padding: 12px 1px;
                     border: 1px solid #ddd;
                     border-radius: 5px;
                     font-size: 16px;
