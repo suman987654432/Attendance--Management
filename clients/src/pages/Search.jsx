@@ -31,7 +31,7 @@ const Search = () => {
       if (!searchName && searchDate) {
         // Search by date only
         const { data } = await axios.get(
-          `http://localhost:5000/api/student/attendance?date=${searchDate}`
+          `https://attendance-management-w98q.onrender.com/api/student/attendance?date=${searchDate}`
         );
         setSearchResults(data);
         if (data.length === 0) {
@@ -39,7 +39,7 @@ const Search = () => {
         }
       } else {
         // Search by name (with optional date)
-        let url = `http://localhost:5000/api/student/search?name=${searchName}`;
+        let url = `https://attendance-management-w98q.onrender.com/api/student/search?name=${searchName}`;
         
         // Add date to search if provided
         if (searchDate) {

@@ -13,7 +13,7 @@ const DisplayPage = () => {
   const fetchStudents = async () => {
     setLoading(true);
     try {
-      const { data } = await axios.get('http://localhost:5000/api/student/all');
+      const { data } = await axios.get('https://attendance-management-w98q.onrender.com/api/student/all');
       setStudents(data);
     } catch (error) {
       console.error('Error fetching students:', error);
@@ -35,7 +35,7 @@ const DisplayPage = () => {
     }
 
     try {
-      await axios.put(`http://localhost:5000/api/student/attendance/${id}`, {
+      await axios.put(`https://attendance-management-w98q.onrender.com/api/student/attendance/${id}`, {
         status,
         date: attendanceDate,
       });
@@ -61,7 +61,7 @@ const DisplayPage = () => {
 
     try {
       const { data } = await axios.get(
-        `http://localhost:5000/api/student/attendance?date=${selectedDate}`
+        `https://attendance-management-w98q.onrender.com/api/student/attendance?date=${selectedDate}`
       );
       setAttendanceRecords(data);
     } catch (error) {
